@@ -12,19 +12,6 @@ const AddEmployee = () => {
   const [email, setEmail] = React.useState("");
   const [dob, setDob] = React.useState("");
 
-  const fnameChange = (e) => {
-    setFname(e.target.value);
-  };
-  const lnameChange = (e) => {
-    setLname(e.target.value);
-  };
-  const dobChange = (e) => {
-    setDob(e.target.value);
-  };
-  const emailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
   return (
     <React.Fragment>
       <Container maxWidth="md">
@@ -42,7 +29,7 @@ const AddEmployee = () => {
                 autoComplete="cc-name"
                 variant="standard"
                 value={fname}
-                onChange={fnameChange}
+                onChange={() => setFname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -54,7 +41,7 @@ const AddEmployee = () => {
                 autoComplete="cc-name"
                 variant="standard"
                 value={lname}
-                onChange={lnameChange}
+                onChange={() => setLname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -65,7 +52,7 @@ const AddEmployee = () => {
                 fullWidth
                 variant="standard"
                 value={dob}
-                onChange={dobChange}
+                onChange={() => setDob(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -76,7 +63,7 @@ const AddEmployee = () => {
                 fullWidth
                 variant="standard"
                 value={email}
-                onChange={emailChange}
+                onChange={() => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
