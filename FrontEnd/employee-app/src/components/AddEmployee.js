@@ -4,13 +4,36 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Container from "@mui/material/Container";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 
 const AddEmployee = () => {
   const [fname, setFname] = React.useState("");
   const [lname, setLname] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [dob, setDob] = React.useState("");
+
+  const [employees, setEmployees] = React.useState("");
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const employee = {fname,lname,email,dob};
+    console.log(employee);
+    fetch("http://localhost:8080/add_employee", {
+      method : "POST",
+      headers : {"content-type" : "application/json"},
+      body : JSON.stringify(employee)
+    }).then (()=> {
+      console.log("New Employee Added")
+    })
+  } 
+
+  React.useEffect(() => {
+    fetch("http://localhost:8080/get_employee")
+      .then((res) => res.json())
+      .then((result) => {
+        setEmployees(result);
+      })
+  }, [])
 
   return (
     <React.Fragment>
@@ -69,7 +92,9 @@ const AddEmployee = () => {
             <Grid item xs={12}>
               <FormControlLabel
                 control={
-                  <Button variant="contained" href="#contained-buttons">
+                  <Button variant="contained"
+                    onClick={handleClick}
+                  >
                     Submit
                   </Button>
                 }
@@ -77,6 +102,22 @@ const AddEmployee = () => {
             </Grid>
           </Grid>
         </form>
+
+
+        {/* <Paper elevation={3}>
+      <h1>Student List</h1>
+      {employees.map(employee => (
+        <Paper
+          elevation={6}
+          style={{ margin: "10px", padding: "15px", textAlign: "left" }}
+          key={employee.id}
+        >
+          Id: {employee.id}
+          first name: {employee.first_name}
+          last name: {employee.last_name}
+        </Paper>
+      ))}
+    </Paper> */}
       </Container>
     </React.Fragment>
   );

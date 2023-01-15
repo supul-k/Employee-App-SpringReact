@@ -4,10 +4,11 @@ package com.emp.employee.controller;
 import com.emp.employee.model.Employee;
 import com.emp.employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 public class EmployeeController {
 
@@ -18,4 +19,6 @@ public class EmployeeController {
     Employee newEmployee(@RequestBody Employee newEmployee){
         return employeeRepository.save(newEmployee);
     }
+
+
 }
