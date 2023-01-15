@@ -29,7 +29,7 @@ const AddEmployee = () => {
                 autoComplete="cc-name"
                 variant="standard"
                 value={fname}
-                onChange={() => setFname(e.target.value)}
+                onChange={(e) => setFname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -41,7 +41,7 @@ const AddEmployee = () => {
                 autoComplete="cc-name"
                 variant="standard"
                 value={lname}
-                onChange={() => setLname(e.target.value)}
+                onChange={(e) => setLname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -52,7 +52,7 @@ const AddEmployee = () => {
                 fullWidth
                 variant="standard"
                 value={dob}
-                onChange={() => setDob(e.target.value)}
+                onChange={(e) => setDob(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -63,13 +63,13 @@ const AddEmployee = () => {
                 fullWidth
                 variant="standard"
                 value={email}
-                onChange={() => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
                 control={
-                  <Button onSubmit={} variant="contained" href="#contained-buttons">
+                  <Button variant="contained" href="#contained-buttons">
                     Submit
                   </Button>
                 }
